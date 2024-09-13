@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="winter">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,14 +8,54 @@
 
     <title>Master</title>
 
+    <!-- Link -->
     <link rel="stylesheet" href="./styles/output.css">
     <link rel="stylesheet" href="./styles/font.css">
+
+    <!-- CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 </head>
 <body>
-    <div class="">
-        โดยที่ประชาชนแห่งสหประชาชาติได้ยืนยันอีกครั้งไว้ในกฎบัตรถึงศรัทธาในสิทธิมนุษยชนขั้นพื้นฐาน
-        HEllo guys whowowww
+    <div>
+        <header class="h-24">
+            <nav class="fixed inset-x-0 w-full flex justify-center top-5 z-10">
+                <ul class="menu menu-horizontal bg-base-200 rounded-full grid-cols-4 gap-2">
+                    <!-- Home -->
+                    <li>
+                      <a class="tooltip tooltip-bottom rounded-full" data-tip="Home">
+                        <i class="fa-solid fa-house fa-lg"></i>
+                      </a>
+                    </li>
+
+                    <li class="sm:w-8">
+                        <!-- space -->
+                    </li>
+
+                    <!-- Add Student -->
+                    <li class="col-span-2">
+                      <a class="tooltip tooltip-bottom rounded-full bg-primary hover:bg-primary-content hover:text-current text-white sm:flex" data-tip="Add Student">
+                        <p class="hidden sm:block">เพิ่มข้อมูล</p>
+                        <i class="fa-solid fa-user-plus fa-lg"></i>
+                      </a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
     </div>
-    <div class="bg-blue-400">Hello</div>
+
+    <main class="container px-3 mx-auto">
+        <div>
+            <!-- Status -->
+            <section>
+                <article class="card bg-blue-400">Content</article>
+                <article class="card bg-blue-400">Content</article>
+            </section>
+
+            <!-- Table -->
+            <section></section>
+        </div>
+    </main>
+
+    <footer></footer>
 </body>
 </html>

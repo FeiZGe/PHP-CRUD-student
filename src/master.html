@@ -15,7 +15,7 @@
     <!-- CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 </head>
-<body>
+<body class="bg-sky-300/[.06]">
     <div>
         <header class="h-24">
             <nav class="fixed inset-x-0 w-full flex justify-center top-5 z-10">
@@ -45,11 +45,78 @@
 
     <main class="container px-3 mx-auto">
         <div>
-            <!-- Status -->
+            <!-- Dashboard -->
             <section>
-                <article class="card bg-blue-400">Content</article>
-                <article class="card bg-blue-400">Content</article>
+                <h1 class="divider divider-start text-3xl sm:text-6xl mb-7">
+                    Dashboard
+                </h1>
             </section>
+
+            <section>
+                <div class="grid grid-cols-3 gap-3 h-48">
+                    <!-- Show Student member -->
+                    <article class="card col-span-2 h-full bg-base-100 shadow-xl justify-center px-4 sm:px-8">
+                        <h2 class="absolute top-2 left-4 text-2xl opacity-60">
+                            จำนวนนักเรียน
+                        </h2>
+                        <div class="flex flex-row gap-10 sm:gap-16 justify-end items-center">
+                            
+                            <!-- Student member -->
+                            <div class="text-7xl sm:text-8xl text-secondary">
+                                187,298
+                            </div>
+
+                            <!-- Icon -->
+                            <div class="text-6xl sm:text-8xl">
+                                <i class="fa-solid fa-user-graduate"></i>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Gender -->
+                    <div class="col-span-1 h-full flex flex-col gap-3">
+                        <!-- Male -->
+                        <article class="card h-1/2 bg-base-100 shadow-xl justify-center px-4 sm:px-6">
+                            <h2 class="absolute top-0.5 left-3 text-base opacity-60">
+                                จำนวนนักเรียนเพศชาย
+                            </h2>
+                            <div class="flex flex-row gap-4 sm:gap-6 justify-end items-center">
+                                
+                                <!-- Male amount -->
+                                <div class="text-5xl sm:text-6xl text-blue-600">
+                                    768
+                                </div>
+    
+                                <!-- Icon -->
+                                <div class="text-4xl sm:text-5xl">
+                                    <i class="fa-solid fa-person"></i>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- Female -->
+                        <article class="card h-1/2 bg-base-100 shadow-xl justify-center px-4 sm:px-6">
+                            <h2 class="absolute top-0.5 left-3 text-base opacity-60">
+                                จำนวนนักเรียนเพศหญิง
+                            </h2>
+                            <div class="flex flex-row gap-4 sm:gap-6 justify-end items-center">
+                                
+                                <!-- Female amount -->
+                                <div class="text-5xl sm:text-6xl text-fuchsia-600">
+                                    392
+                                </div>
+    
+                                <!-- Icon -->
+                                <div class="text-4xl sm:text-5xl">
+                                    <i class="fa-solid fa-person-dress"></i>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <div class="divider divider-neutral my-7"></div>
 
             <!-- Table -->
             <section></section>

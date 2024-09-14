@@ -12,7 +12,7 @@
     <!-- CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 </head>
-<body>
+<body class="bg-sky-300/[.06]">
     <header class="h-24">
         <nav class="fixed inset-x-0 w-full flex justify-center top-5 z-10">
             <ul class="menu menu-horizontal bg-base-200 rounded-full grid-cols-4 gap-2">
@@ -23,8 +23,21 @@
                   </a>
                 </li>
 
-                <li class="sm:w-8">
-                    <!-- space -->
+                <li class="">
+                    <label class="swap swap-rotate">
+                        <!-- this hidden checkbox controls the state -->
+                        <input type="checkbox" class="theme-controller" value="night" />
+                      
+                        <!-- sun icon -->
+                        <div class="swap-off">
+                            <i class="fa-solid fa-sun fa-lg"></i>
+                        </div>
+                      
+                        <!-- moon icon -->
+                        <div class="swap-on">
+                            <i class="fa-solid fa-moon fa-lg"></i>
+                        </div>
+                    </label>
                 </li>
 
                 <!-- Add Student -->
@@ -39,7 +52,7 @@
     </header>
 
     <main class="container px-3 mx-auto">
-        <section class="card bg-base-100 w-full h-56 shadow-2xl shadow-blue-500 items-center pt-3 py-6">
+        <section class="card bg-base-100 w-full h-56 shadow-2xl items-center pt-3 py-6">
             main
         </section>
     </main>

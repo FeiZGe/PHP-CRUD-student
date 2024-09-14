@@ -203,6 +203,11 @@
 
             <!-- Table -->
             <section>
+
+                <h1 class="text-3xl sm:text-5xl font-bold mb-3">
+                    รายชื่อนักศึกษา
+                </h1>
+
                 <div class="card bg-base-100 shadow-xl p-10">
 
                     <!-- Table Start -->
@@ -212,9 +217,10 @@
                             <thead>
                                 <tr>
                                     <th>รหัสนักศึกษา</th>
-                                    <th>ชื่อ</th>
+                                    <th>ชื่อ - นามสกุล</th>
                                     <th>ภูมิลำเนา</th>
-                                    <th>วิชาที่ลงทะเบียนเรียน</th>
+                                    <th>สาขาวิชา</th>
+                                    <th>ชั้นปี</th>
                                     <th>เบอร์โทร</th>
                                     <th>Action</th>
                                 </tr>
@@ -230,42 +236,117 @@
                                     <!-- ชื่อ -->
                                     <td>
                                         <div class="flex items-center gap-3">
-                                        <div class="avatar">
-                                            <div class="mask mask-squircle h-12 w-12">
-                                            <img
-                                                src="https://img.daisyui.com/images/profile/demo/2@94.webp"
-                                                alt="Avatar Tailwind CSS Component" />
+                                            <div class="avatar">
+                                                <div class="mask mask-squircle h-12 w-12">
+                                                <img
+                                                    src="https://img.daisyui.com/images/profile/demo/2@94.webp"
+                                                    alt="Avatar Tailwind CSS Component" />
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div>
-                                            <div class="font-bold">
-                                                Hart Hagerty
+                                            <div>
+                                                <div class="font-bold flex">
+
+                                                    <!-- คำนำหน้า -->
+                                                    <div>
+                                                        นาย
+                                                    </div>
+
+                                                    <!-- ชื่อ -->
+                                                    <div>
+                                                        สมชาย
+                                                    </div>
+                                                    <!-- เว้นวรรค -->
+                                                    <pre> </pre>
+
+                                                    <!-- นามสกุล -->
+                                                     <div>
+                                                        ใจดี
+                                                     </div>
+                                                </div>
+
+                                                <!-- ENG name -->
+                                                <div class="text-sm opacity-50 flex">
+                                                    <!-- คำนำหน้า -->
+                                                    <div>
+                                                        Mr.
+                                                    </div>
+
+                                                    <!-- ชื่อ -->
+                                                    <div>
+                                                        Somchai
+                                                    </div>
+                                                    <!-- เว้นวรรค -->
+                                                    <pre> </pre>
+
+                                                    <!-- นามสกุล -->
+                                                    <div>
+                                                        Jaidee
+                                                    </div>
+                                                </div>
                                             </div>
-                                            <div class="text-sm opacity-50">
-                                                United States
-                                            </div>
-                                        </div>
                                         </div>
                                     </td>
 
                                     <!-- ภูมิลำเนา -->
                                     <td>
-                                        Zemlak, Daniel and Leannon
-                                        <br />
-                                        <span class="badge badge-ghost badge-sm">
-                                            Desktop Support Technician
-                                        </span>
+                                        <div class="flex flex-col flex-wrap gap-0.5">
+
+                                            <!-- ที่อยู่ -->
+                                            <div>
+                                                211/22 หมู่ 1 ต.ใจใหญ่ อ.น้อยหน่า
+                                            </div>
+
+                                            <!-- จังหวัด -->
+                                            <div class="badge badge-ghost">
+                                                กรุงเทพ
+                                            </div>
+                                        </div>
                                     </td>
 
-                                    <!-- วิชาที่ลงทะเบียนเรียน -->
+                                    <!-- สาขาวิชา -->
                                     <td>
-                                        Purple
+                                        <div class="flex flex-col flex-wrap gap-0.5">
+
+                                            <!-- สาขา -->
+                                            <div>
+                                                สาขาวิทยาการคอมพิวเตอร์
+                                            </div>
+
+                                            <!-- วิชาที่ลงทะเบียนเรียน -->
+                                            <div class="badge badge-primary badge-outline text-nowrap">
+                                                การพัฒนาเว็บแอปพลิเคชัน
+                                            </div>
+                                        </div>
+                                    </td>
+
+                                    <!-- ชั้นปี -->
+                                    <td>
+                                        <div class="text-nowrap">
+                                            ปี 7
+                                        </div>
                                     </td>
 
                                     <!-- เบอร์โทร -->
-                                    <th>
-                                        <button class="btn btn-ghost btn-xs">details</button>
-                                    </th>
+                                    <td>
+                                        <div class="text-nowrap">
+                                            0999999999
+                                        </div>
+                                    </td>
+
+                                    <!-- Action -->
+                                    <td>
+                                        <div class="flex flex-wrap sm:flex-nowrap gap-1">
+                                            <a href="#" class="btn btn-info btn-square btn-sm text-base-100 text-lg tooltip tooltip-right sm:tooltip-top tooltip-info hover:scale-110" data-tip="รายละเอียด">
+                                                <i class="fa-solid fa-circle-info"></i>
+                                            </a>
+                                            <button class="btn btn-warning btn-square btn-sm text-base-100 text-lg tooltip tooltip-right sm:tooltip-top tooltip-warning hover:scale-110" data-tip="แก้ไขข้อมูล">
+                                                <i class="fa-solid fa-pen"></i>
+                                            </button>
+                                            <button class="btn btn-error btn-square btn-sm text-base-100 text-lg tooltip tooltip-right sm:tooltip-top tooltip-error hover:scale-110" data-tip="ลบข้อมูล">
+                                                <i class="fa-solid fa-trash"></i>
+                                            </button>
+                                        </div>
+                                    </td>
                                 </tr>
                                 
                                 
@@ -275,9 +356,10 @@
                             <tfoot>
                                 <tr>
                                     <th>รหัสนักศึกษา</th>
-                                    <th>ชื่อ</th>
+                                    <th>ชื่อ - นามสกุล</th>
                                     <th>ภูมิลำเนา</th>
-                                    <th>วิชาที่ลงทะเบียนเรียน</th>
+                                    <th>สาขาวิชา</th>
+                                    <th>ชั้นปี</th>
                                     <th>เบอร์โทร</th>
                                     <th>Action</th>
                                 </tr>

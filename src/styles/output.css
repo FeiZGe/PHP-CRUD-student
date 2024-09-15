@@ -1850,6 +1850,12 @@ html {
   background-color: var(--fallback-wa,oklch(var(--wa)/var(--tw-bg-opacity)));
 }
 
+.divider-error:before,
+  .divider-error:after {
+  --tw-bg-opacity: 1;
+  background-color: var(--fallback-er,oklch(var(--er)/var(--tw-bg-opacity)));
+}
+
 .input input {
   --tw-bg-opacity: 1;
   background-color: var(--fallback-p,oklch(var(--p)/var(--tw-bg-opacity)));
@@ -2945,6 +2951,11 @@ html {
 .text-yellow-400 {
   --tw-text-opacity: 1;
   color: rgb(250 204 21 / var(--tw-text-opacity));
+}
+
+.text-red-500 {
+  --tw-text-opacity: 1;
+  color: rgb(239 68 68 / var(--tw-text-opacity));
 }
 
 .opacity-50 {

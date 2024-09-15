@@ -332,7 +332,7 @@ require_once "../config/dbconnect.php";
                                             <button class="btn btn-warning btn-square btn-sm text-base-100 text-lg tooltip tooltip-right sm:tooltip-top tooltip-warning hover:scale-110" data-tip="แก้ไขข้อมูล" onclick="my_modal_sorry.showModal()">
                                                 <i class="fa-solid fa-pen"></i>
                                             </button>
-                                            <button class="btn btn-error btn-square btn-sm text-base-100 text-lg tooltip tooltip-right sm:tooltip-top tooltip-error hover:scale-110" data-tip="ลบข้อมูล" onclick="my_modal_sorry.showModal()">
+                                            <button class="btn btn-error btn-square btn-sm text-base-100 text-lg tooltip tooltip-right sm:tooltip-top tooltip-error hover:scale-110" data-tip="ลบข้อมูล" onclick="my_modal_del.showModal()">
                                                 <i class="fa-solid fa-trash"></i>
                                             </button>
                                         </div>
@@ -365,6 +365,52 @@ require_once "../config/dbconnect.php";
             </section>
         </div>
     </main>
+
+
+    <!-- Open the modal using ID.showModal() method -->
+    <!-- sorry -->
+    <dialog id="my_modal_sorry" class="modal modal-bottom sm:modal-middle">
+        <div class="modal-box">
+            <div class="text-lg font-bold text-yellow-400 flex items-center gap-2">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+                <h3>ขออภัย!</h3>
+            </div>
+            <div class="divider divider-warning"></div>
+            <div class="py-2">
+                <p>ฟีเจอร์นี้ยังไม่พร้อมใช้งานในขณะนี้</p>
+                <p>กรุณาลองใหม่ในภายหลัง</p>
+            </div>
+            <div class="modal-action">
+            <form method="dialog">
+                <!-- if there is a button in form, it will close the modal -->
+                <button class="btn btn-sm">ปิด</button>
+            </form>
+            </div>
+        </div>
+    </dialog>
+
+    <!-- Confirm delete -->
+    <dialog id="my_modal_del" class="modal modal-bottom sm:modal-middle">
+        <div class="modal-box">
+            <div class="text-lg font-bold flex items-center gap-2 text-red-500">
+                <i class="fa-solid fa-bell"></i>
+                <h3>ยืนยันการลบข้อมูล</h3>
+            </div>
+            <div class="divider divider-error"></div>
+            <div class="py-2">
+                <p>ต้องการที่จะลบข้อมูลนี้หรือไม่</p>
+            </div>
+            <div class="modal-action">
+            <form method="dialog">
+                <!-- if there is a button in form, it will close the modal -->
+                <button class="btn btn-sm btn-error">ลบข้อมูล</button>
+                <button class="btn btn-sm">ปิด</button>
+            </form>
+            </div>
+        </div>
+    </dialog>
+
+    <!--  END Open the modal using ID.showModal() method -->
 
     <div>
         <?php include('./components/footer.php'); ?>

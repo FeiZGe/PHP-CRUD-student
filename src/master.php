@@ -2,6 +2,45 @@
 
 require_once "../config/dbconnect.php";
 
+try {
+    // จำนวนทั้งหมด
+    $stmt_total = $conn->query("SELECT COUNT(*) as total FROM view_student_details");
+    $result_total = $stmt_total->fetch(PDO::FETCH_ASSOC);
+    $total_students = $result_total['total'];
+
+    // จำนวนเพศชายและเพศหญิง
+    $stmt_gender = $conn->query("
+        SELECT 
+            Prefix,
+            COUNT(*) as total
+        FROM view_student_details
+        GROUP BY Prefix
+    ");
+    $gender_data = $stmt_gender->fetchAll(PDO::FETCH_ASSOC);
+    $total_male = 0;
+    $total_female = 0;
+    foreach ($gender_data as $gender) {
+        if ($gender['Prefix'] === 'นาย') { // คำนำหน้าเพศชาย
+            $total_male = $gender['total'];
+        } elseif ($gender['Prefix'] === 'นางสาว' || $gender['Prefix'] === 'นาง') { // คำนำหน้าเพศหญิง
+            $total_female = $gender['total'];
+        }
+    }
+
+    // จำนวนตามชั้นปี
+    $stmt_years = $conn->query("
+        SELECT 
+            StudyYear AS Year, 
+            COUNT(*) as total
+        FROM view_student_details
+        GROUP BY StudyYear
+        ORDER BY StudyYear ASC
+    ");
+    $years_data = $stmt_years->fetchAll(PDO::FETCH_ASSOC);
+
+} catch (PDOException $e) {
+    echo "Error: " . $e->getMessage();
+}
 ?>
 <!DOCTYPE html>
 <html lang="en" data-theme="winter">
@@ -44,7 +83,7 @@ require_once "../config/dbconnect.php";
                             
                             <!-- Student member -->
                             <div class="text-6xl sm:text-7xl md:text-8xl text-secondary">
-                                187,298
+                                <?= number_format($total_students); ?>
                             </div>
 
                             <!-- Icon -->
@@ -65,7 +104,7 @@ require_once "../config/dbconnect.php";
                                 
                                 <!-- Male amount -->
                                 <div class="text-5xl sm:text-6xl text-blue-600">
-                                    768
+                                    <?= number_format($total_male); ?>
                                 </div>
     
                                 <!-- Icon -->
@@ -84,7 +123,7 @@ require_once "../config/dbconnect.php";
                                 
                                 <!-- Female amount -->
                                 <div class="text-5xl sm:text-6xl text-fuchsia-600">
-                                    392
+                                    <?= number_format($total_female); ?>
                                 </div>
     
                                 <!-- Icon -->
@@ -99,82 +138,26 @@ require_once "../config/dbconnect.php";
                 <!-- Year -->
                 <div>
                     <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-3">
+                        <?php foreach ($years_data as $year): ?>
+                            
+                            <article class="card w-full h-20 justify-center bg-base-100 shadow-lg px-4 sm:px-6">
+                                <h2 class="absolute top-1 left-3 text-base opacity-60">
+                                    ชั้นปีที่ <?= htmlspecialchars($year['Year']); ?>
+                                </h2>
+                                <div class="flex flex-row gap-4 sm:gap-5 justify-end items-center w-full">
+                                    
+                                    <!-- Amount -->
+                                    <div class="text-4xl sm:text-5xl">
+                                        <?= number_format($year['total']); ?>
+                                    </div>
 
-                        <!-- Year 1 -->
-                        <article class="card w-full h-20 justify-center bg-base-100 shadow-lg px-4 sm:px-6">
-                            <h2 class="absolute top-1 left-3 text-base opacity-60">
-                                ชั้นปีที่ 1
-                            </h2>
-                            <div class="flex flex-row gap-4 sm:gap-5 justify-end items-center w-full">
-                                
-                                <!-- Female amount -->
-                                <div class="text-4xl sm:text-5xl">
-                                    32
+                                    <!-- Icon -->
+                                    <div class="text-3xl sm:text-4xl">
+                                        <i class="fa-solid fa-user"></i>
+                                    </div>
                                 </div>
-    
-                                <!-- Icon -->
-                                <div class="text-3xl sm:text-4xl">
-                                    <i class="fa-solid fa-user"></i>
-                                </div>
-                            </div>
-                        </article>
-
-                        <!-- Year 2 -->
-                        <article class="card w-full h-20 items-center justify-center bg-base-100 shadow-lg px-4 sm:px-6">
-                            <h2 class="absolute top-1 left-3 text-base opacity-60">
-                                ชั้นปีที่ 2
-                            </h2>
-                            <div class="flex flex-row gap-4 sm:gap-5 items-center justify-end w-full">
-                                
-                                <!-- Female amount -->
-                                <div class="text-4xl sm:text-5xl">
-                                    32
-                                </div>
-    
-                                <!-- Icon -->
-                                <div class="text-3xl sm:text-4xl">
-                                    <i class="fa-solid fa-user"></i>
-                                </div>
-                            </div>
-                        </article>
-
-                        <!-- Year 3 -->
-                        <article class="card w-full h-20 items-center justify-center bg-base-100 shadow-lg px-4 sm:px-6">
-                            <h2 class="absolute top-1 left-3 text-base opacity-60">
-                                ชั้นปีที่ 3
-                            </h2>
-                            <div class="flex flex-row gap-4 sm:gap-5 justify-end items-center w-full">
-                                
-                                <!-- Female amount -->
-                                <div class="text-4xl sm:text-5xl">
-                                    32
-                                </div>
-    
-                                <!-- Icon -->
-                                <div class="text-3xl sm:text-4xl">
-                                    <i class="fa-solid fa-user"></i>
-                                </div>
-                            </div>
-                        </article>
-
-                        <!-- Year 4 -->
-                        <article class="card w-full h-20 items-center justify-center bg-base-100 shadow-lg px-4 sm:px-6">
-                            <h2 class="absolute top-1 left-3 text-base opacity-60">
-                                ชั้นปีที่ 4
-                            </h2>
-                            <div class="flex flex-row gap-4 sm:gap-5 items-center justify-end w-full">
-                                
-                                <!-- Female amount -->
-                                <div class="text-4xl sm:text-5xl">
-                                    32
-                                </div>
-    
-                                <!-- Icon -->
-                                <div class="text-3xl sm:text-4xl">
-                                    <i class="fa-solid fa-user"></i>
-                                </div>
-                            </div>
-                        </article>
+                            </article>
+                        <?php endforeach; ?>
                     </div>
                 </div>
             </section>

@@ -22,5 +22,9 @@ require_once "../config/dbconnect.php";
     <div>
         <?php include('./components/nav.php'); ?>
     </div>
+
+    <div>
+        <?php include('./components/footer.php'); ?>
+    </div>
 </body>
 </html>

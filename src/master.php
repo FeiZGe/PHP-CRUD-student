@@ -1,7 +1,6 @@
 <?php
 
 require_once "../config/dbconnect.php";
-require_once "./db.php";
 
 ?>
 <!DOCTYPE html>
@@ -207,11 +206,21 @@ require_once "./db.php";
                                 </tr>
                             </thead>
                             <tbody>
+                                <?php
+                                    $stmt = $conn->query("SELECT * FROM view_student_details ORDER BY SID ASC");
+                                    $stmt->execute();
+                                    $users = $stmt->fetchAll();
+
+                                    if (!$users) {
+                                        echo "<tr><td class='text-center'>ไม่พบข้อมูล</td></tr>";
+                                    } else {
+                                        foreach ($users as $user) {
+                                ?>
                                 <!-- row 1 -->
                                 <tr>
                                     <!-- รหัสนักศึกษา -->
                                     <td>
-                                        1
+                                        <?= $user['SID']; ?>
                                     </td>
 
                                     <!-- ชื่อ -->
@@ -220,7 +229,7 @@ require_once "./db.php";
                                             <div class="avatar">
                                                 <div class="mask mask-squircle h-12 w-12">
                                                 <img
-                                                    src="./assets/avatar/avatar1.jpeg"
+                                                    src="./assets/avatar/<?= $user['Avatar']; ?>.jpeg"
                                                     alt="Avatar Macaws" />
                                                 </div>
                                             </div>
@@ -229,39 +238,39 @@ require_once "./db.php";
 
                                                     <!-- คำนำหน้า -->
                                                     <div>
-                                                        นาย
+                                                        <?= $user['Prefix']; ?>
                                                     </div>
 
                                                     <!-- ชื่อ -->
                                                     <div>
-                                                        สมชาย
+                                                        <?= $user['StudentName']; ?>
                                                     </div>
                                                     <!-- เว้นวรรค -->
                                                     <pre> </pre>
 
                                                     <!-- นามสกุล -->
-                                                     <div>
-                                                        ใจดี
-                                                     </div>
+                                                    <div>
+                                                        <?= $user['StudentLastname']; ?>
+                                                    </div>
                                                 </div>
 
                                                 <!-- ENG name -->
                                                 <div class="text-sm opacity-50 flex">
                                                     <!-- คำนำหน้า -->
                                                     <div>
-                                                        Mr.
+                                                        <?= $user['PrefixEN']; ?>
                                                     </div>
 
                                                     <!-- ชื่อ -->
                                                     <div>
-                                                        Somchai
+                                                        <?= $user['StudentNameEN']; ?>
                                                     </div>
                                                     <!-- เว้นวรรค -->
                                                     <pre> </pre>
 
                                                     <!-- นามสกุล -->
                                                     <div>
-                                                        Jaidee
+                                                        <?= $user['StudentLastnameEN']; ?>
                                                     </div>
                                                 </div>
                                             </div>
@@ -274,12 +283,12 @@ require_once "./db.php";
 
                                             <!-- ที่อยู่ -->
                                             <div>
-                                                211/22 หมู่ 1 ต.ใจใหญ่ อ.น้อยหน่า
+                                                <?= $user['Domicile']; ?>
                                             </div>
 
                                             <!-- จังหวัด -->
                                             <div class="badge badge-ghost">
-                                                กรุงเทพ
+                                                <?= $user['City']; ?>
                                             </div>
                                         </div>
                                     </td>
@@ -290,12 +299,12 @@ require_once "./db.php";
 
                                             <!-- สาขา -->
                                             <div>
-                                                สาขาวิทยาการคอมพิวเตอร์
+                                                <?= $user['Department']; ?>
                                             </div>
 
                                             <!-- วิชาที่ลงทะเบียนเรียน -->
                                             <div class="badge badge-primary badge-outline text-nowrap">
-                                                การพัฒนาเว็บแอปพลิเคชัน
+                                                <?= $user['SubjectName']; ?>
                                             </div>
                                         </div>
                                     </td>
@@ -303,24 +312,37 @@ require_once "./db.php";
                                     <!-- ชั้นปี -->
                                     <td>
                                         <div class="text-nowrap">
-                                            ปี 7
+                                            <?= $user['StudyYear']; ?>
                                         </div>
                                     </td>
 
                                     <!-- เบอร์โทร -->
                                     <td>
                                         <div class="text-nowrap">
-                                            0999999999
+                                            <?= $user['Telephone']; ?>
                                         </div>
                                     </td>
 
                                     <!-- Action -->
                                     <td>
-                                        <?php include('./components/actionbtn.php') ?>
+                                        <div class="flex flex-wrap sm:flex-nowrap gap-1">
+                                            <a href="./details.php" class="btn btn-info btn-square btn-sm text-base-100 text-lg tooltip tooltip-right sm:tooltip-top tooltip-info hover:scale-110" data-tip="รายละเอียด" onclick="my_modal_sorry.showModal()">
+                                                <i class="fa-solid fa-circle-info"></i>
+                                            </a>
+                                            <button class="btn btn-warning btn-square btn-sm text-base-100 text-lg tooltip tooltip-right sm:tooltip-top tooltip-warning hover:scale-110" data-tip="แก้ไขข้อมูล" onclick="my_modal_sorry.showModal()">
+                                                <i class="fa-solid fa-pen"></i>
+                                            </button>
+                                            <button class="btn btn-error btn-square btn-sm text-base-100 text-lg tooltip tooltip-right sm:tooltip-top tooltip-error hover:scale-110" data-tip="ลบข้อมูล" onclick="my_modal_sorry.showModal()">
+                                                <i class="fa-solid fa-trash"></i>
+                                            </button>
+                                        </div>
                                     </td>
                                 </tr>
-                                
-                                
+                                <?php
+                                    }
+                                }
+                                ?>
+                                <!-- END foreach -->
                                 
                             </tbody>
                             <!-- foot -->

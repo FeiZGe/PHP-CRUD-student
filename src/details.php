@@ -56,9 +56,12 @@ require_once "../config/dbconnect.php";
                     $hobby_list = "";
                     $hobby_list_eng = "";
 
+                    $counter = 1; // นับลำดับงานอดิเรก
+
                     foreach ($hobbies as $hobby) {
-                        $hobby_list .= "<li>" . htmlspecialchars($hobby['HobbyName']) . "</li>";
-                        $hobby_list_eng .= "<li>" . htmlspecialchars($hobby['HobbyNameEng']) . "</li>";
+                        $hobby_list .= "<li>" . $counter . ". " . htmlspecialchars($hobby['HobbyName']) . "</li>";
+                        $hobby_list_eng .= "<li>" . $counter . ". " . htmlspecialchars($hobby['HobbyNameEng']) . "</li>";
+                        $counter++; // Increment counter
                     }
                     ?>
 

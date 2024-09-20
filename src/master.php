@@ -604,7 +604,9 @@ try {
 
                         </section>
 
-                        <input type="submit" value="หน้าถัดไป" class="btn btn-sm">
+                        <section class="flex flex-row justify-center">
+                            <input type="submit" value="ยืนยัน" class="btn btn-wide btn-primary transition ease-in-out duration-300 hover:scale-110">
+                        </section>
                     </div>
                 </form>
             </div>

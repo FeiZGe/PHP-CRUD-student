@@ -531,7 +531,7 @@ try {
                             <!-- Adress -->
                             <article class="w-full mb-2">
                                 <label for="address" class="block mb-2 text-sm font-medium">ที่อยู่</label>
-                                <textarea id="address" name="address" rows="4" class="block bg-base-200 border border-base-300 text-base-content text-sm rounded-lg focus:ring-primary focus:border-primary w-full p-2.5" placeholder="Write your thoughts here..."></textarea>
+                                <textarea id="address" name="address" rows="4" class="block bg-base-200 border border-base-300 text-base-content text-sm rounded-lg focus:ring-primary focus:border-primary w-full p-2.5" placeholder="กรอกที่อยู่ของคุณ..."></textarea>
                             </article>
 
                         </section>

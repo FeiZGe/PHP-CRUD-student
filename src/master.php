@@ -440,7 +440,7 @@ try {
                             </div>
                         </section>
 
-                        <!-- Name -->
+                        <!-- Information -->
                         <section class="w-4/5 justify-center mx-auto">
                             <h2 class="text-xl font-bold pb-4">ข้อมูลส่วนตัว</h2>
 
@@ -534,6 +534,32 @@ try {
                                 <textarea id="address" name="address" rows="4" class="block bg-base-200 border border-base-300 text-base-content text-sm rounded-lg focus:ring-primary focus:border-primary w-full p-2.5" placeholder="Write your thoughts here..."></textarea>
                             </article>
 
+                        </section>
+
+                        <!-- Hobby -->
+                        <?php
+                            try {
+                                // ดึงข้อมูลงานอิเรกจาก tbl_hobby
+                                $stmt_hobby = $conn->query("SELECT HobbyID, HobbyName FROM tbl_hobby ORDER BY HobbyID ASC");
+                                $hobbys = $stmt_hobby->fetchAll(PDO::FETCH_ASSOC);
+                            
+                            } catch (PDOException $e) {
+                                echo "Select prefix error: " . $e->getMessage();
+                            }
+                        ?>
+
+                        <section class="w-4/5 justify-center mx-auto">
+                            <h2 class="divider divider-start text-xl font-bold py-4">งานอดิเรก</h2>
+
+                            <article class="grid grid-cols-2 sm:grid-cols-3 text-sm gap-3">
+
+                                <?php foreach ($hobbys as $hobby): ?>
+                                <label class="flex flex-row gap-2 cursor-pointer" id="hobby">
+                                    <input type="checkbox" id="hobby" name="hobby" value="<?= htmlspecialchars($hobby['HobbyID']); ?>" class="checkbox checkbox-sm checkbox-primary border border-base-content" />
+                                    <span class=""><?= htmlspecialchars($hobby['HobbyName']); ?></span>
+                                </label>
+                                <?php endforeach; ?>
+                            </article>
                         </section>
 
                         <input type="submit" value="หน้าถัดไป" class="btn btn-sm">

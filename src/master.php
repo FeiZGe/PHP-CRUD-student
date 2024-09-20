@@ -38,6 +38,18 @@ try {
     ");
     $years_data = $stmt_years->fetchAll(PDO::FETCH_ASSOC);
 
+    // ดึงข้อมูลงานอิเรกจาก tbl_hobby
+    $stmt_hobby = $conn->query("SELECT HobbyID, HobbyName FROM tbl_hobby ORDER BY HobbyID ASC");
+    $hobbys = $stmt_hobby->fetchAll(PDO::FETCH_ASSOC);
+
+    // ดึงข้อมูลคำนำหน้าจาก tbl_prefixes
+    $stmt_prefix = $conn->query("SELECT PrefixID, PrefixTH FROM tbl_prefixes ORDER BY PrefixID ASC");
+    $prefixes = $stmt_prefix->fetchAll(PDO::FETCH_ASSOC);
+
+    // ดึงข้อมูลจังหวัดจาก tbl_city
+    $stmt_city = $conn->query("SELECT CityID, CityName FROM tbl_city ORDER BY CityName ASC");
+    $cities = $stmt_city->fetchAll(PDO::FETCH_ASSOC);
+
 } catch (PDOException $e) {
     echo "Error: " . $e->getMessage();
 }
@@ -445,17 +457,6 @@ try {
                             <h2 class="text-xl font-bold pb-4">ข้อมูลส่วนตัว</h2>
 
                             <!-- Prefix -->
-                            <?php
-                                try {
-                                    // ดึงข้อมูลคำนำหน้าจาก tbl_prefixes
-                                    $stmt_prefix = $conn->query("SELECT PrefixID, PrefixTH FROM tbl_prefixes ORDER BY PrefixID ASC");
-                                    $prefixes = $stmt_prefix->fetchAll(PDO::FETCH_ASSOC);
-                                
-                                } catch (PDOException $e) {
-                                    echo "Select prefix error: " . $e->getMessage();
-                                }
-                            ?>
-
                             <article class="w-2/5 mb-2">
                                 <label for="prefix" class="block mb-1 text-sm font-medium">คำนำหน้า</label>
                                 <select id="prefix" name="prefix" class="select bg-base-200 border border-base-300 text-base-content text-sm rounded-lg focus:ring-primary focus:border-primary block w-full py-1 px-2.5">
@@ -505,17 +506,6 @@ try {
                             </article>
 
                             <!-- City -->
-                            <?php
-                                try {
-                                    // ดึงข้อมูลจังหวัดจาก tbl_city
-                                    $stmt_city = $conn->query("SELECT CityID, CityName FROM tbl_city ORDER BY CityName ASC");
-                                    $cities = $stmt_city->fetchAll(PDO::FETCH_ASSOC);
-                                
-                                } catch (PDOException $e) {
-                                    echo "Select city error: " . $e->getMessage();
-                                }
-                            ?>
-
                             <article class="w-2/5 mb-2">
                                 <label for="city" class="block mb-1 text-sm font-medium">จังหวัด</label>
                                 <select id="city" name="city" class="select bg-base-200 border border-base-300 text-base-content text-sm rounded-lg focus:ring-primary focus:border-primary block w-full py-1 px-2.5">
@@ -537,17 +527,6 @@ try {
                         </section>
 
                         <!-- Hobby -->
-                        <?php
-                            try {
-                                // ดึงข้อมูลงานอิเรกจาก tbl_hobby
-                                $stmt_hobby = $conn->query("SELECT HobbyID, HobbyName FROM tbl_hobby ORDER BY HobbyID ASC");
-                                $hobbys = $stmt_hobby->fetchAll(PDO::FETCH_ASSOC);
-                            
-                            } catch (PDOException $e) {
-                                echo "Select prefix error: " . $e->getMessage();
-                            }
-                        ?>
-
                         <section class="">
                             <h2 class="divider divider-start text-xl font-bold py-4">งานอดิเรก</h2>
 

@@ -50,6 +50,18 @@ try {
     $stmt_city = $conn->query("SELECT CityID, CityName FROM tbl_city ORDER BY CityName ASC");
     $cities = $stmt_city->fetchAll(PDO::FETCH_ASSOC);
 
+    // ดึงข้อมูลชั้นปีจาก tbl_year
+    $stmt_year = $conn->query("SELECT yearID, Year FROM tbl_year ORDER BY yearID ASC");
+    $years = $stmt_year->fetchAll(PDO::FETCH_ASSOC);
+
+    // ดึงข้อมูลสาขาจาก tbl_department
+    $stmt_dep = $conn->query("SELECT DepID, Department FROM tbl_department ORDER BY DepID ASC");
+    $deps = $stmt_dep->fetchAll(PDO::FETCH_ASSOC);
+
+    // ดึงข้อมูลวิชาจาก tbl_subject
+    $stmt_subj = $conn->query("SELECT SubjectID, Subject FROM tbl_subject ORDER BY SubjectID ASC");
+    $subjects = $stmt_subj->fetchAll(PDO::FETCH_ASSOC);
+
 } catch (PDOException $e) {
     echo "Error: " . $e->getMessage();
 }
@@ -547,17 +559,49 @@ try {
                         <section class="">
                             <h2 class="text-xl font-bold mb-4">การศึกษา</h2>
                             
-                            <!-- Year, Department -->
+                            <!-- Year & Department -->
                             <article class="flex flex-col sm:flex-row gap-4 mb-2">
+
+                                <!-- Year -->
                                 <div class="w-2/5">
-                                    <label for="age" class="block mb-1 text-sm font-medium">อายุ</label>
-                                    <input type="number" id="age" name="age" class="bg-base-200 border border-base-300 text-base-content text-sm rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5" min="1" max="100" placeholder="1" required />
+                                    <label for="year" class="block mb-1 text-sm font-medium">ชั้นปี</label>
+                                    <select id="year" name="year" class="select bg-base-200 border border-base-300 text-base-content text-sm rounded-lg focus:ring-primary focus:border-primary block w-full py-1 px-2.5">
+                                        <option disabled selected>เลือกชั้นปี</option>
+                                        <?php foreach ($years as $year): ?>
+                                            <option value="<?= htmlspecialchars($year['yearID']); ?>">
+                                                <?= htmlspecialchars($year['Year']); ?>
+                                            </option>
+                                        <?php endforeach; ?>
+                                    </select>
                                 </div>
+
+                                <!-- Department -->
                                 <div class="w-full">
-                                    <label for="phone" class="block mb-1 text-sm font-medium">เบอร์โทร</label>
-                                    <input type="tel" id="phone" name="phone" class="bg-base-200 border border-base-300 text-base-content text-sm rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5 dark:bg-base-100" min="0000000000" max="999999999" placeholder="0999999999" required />
+                                    <label for="department" class="block mb-1 text-sm font-medium">สาขา</label>
+                                    <select id="department" name="department" class="select bg-base-200 border border-base-300 text-base-content text-sm rounded-lg focus:ring-primary focus:border-primary block w-full py-1 px-2.5">
+                                        <option disabled selected>เลือกสาขา</option>
+                                        <?php foreach ($deps as $dep): ?>
+                                            <option value="<?= htmlspecialchars($dep['DepID']); ?>">
+                                                <?= htmlspecialchars($dep['Department']); ?>
+                                            </option>
+                                        <?php endforeach; ?>
+                                    </select>
                                 </div>
                             </article>
+
+                            <!-- Subject -->
+                            <article class="w-full mb-7">
+                                <label for="subject" class="block mb-1 text-sm font-medium">วิชาที่ลงทะเบียนเรียน</label>
+                                <select id="subject" name="subject" class="select bg-base-200 border border-base-300 text-base-content text-sm rounded-lg focus:ring-primary focus:border-primary block w-full py-1 px-2.5">
+                                    <option disabled selected>เลือกวิชา</option>
+                                    <?php foreach ($subjects as $subject): ?>
+                                        <option value="<?= htmlspecialchars($subject['SubjectID']); ?>">
+                                            <?= htmlspecialchars($subject['Subject']); ?>
+                                        </option>
+                                    <?php endforeach; ?>
+                                </select>
+                            </article>
+
                         </section>
 
                         <input type="submit" value="หน้าถัดไป" class="btn btn-sm">

@@ -393,6 +393,88 @@ try {
         </div>
     </dialog>
 
+    <!-- Insert Modal -->
+    <dialog id="my_modal_insert" class="modal">
+            <div class="modal-box">
+                <form method="dialog">
+                <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+                </form>
+                <h1 class="text-3xl font-bold">เพิ่มข้อมูล</h1>
+                <form action="#">
+                    <div>
+                        <!-- avatar -->
+                        <section class="flex flex-col items-center mb-8">
+                            <h2 class="text-xl font-bold text-center py-4">เลือกอวตาร์</h2>
+                            
+                            <!-- Avatar Display -->
+                            <div class="w-2/5 mb-2">
+                                <img id="avatarPreview" src="./assets/avatar/avatar1.jpeg" class="w-full h-full rounded-full object-cover transition-opacity duration-300 ease-in-out" alt="Avatar Preview" />
+                            </div>
+                    
+                            <!-- Avatar Toggle Button -->
+                            <div class="flex w-full justify-center gap-2 py-2">
+                                <label>
+                                    <input type="radio" id="avatar1" name="avatar" value="1" class="hidden peer" required checked />
+                                    <span class="btn btn-sm peer-checked:border-2 peer-checked:border-primary transition-all duration-300 ease-in-out">1</span>
+                                </label>
+                    
+                                <label>
+                                    <input type="radio" id="avatar2" name="avatar" value="2" class="hidden peer" required />
+                                    <span class="btn btn-sm peer-checked:border-2 peer-checked:border-primary transition-all duration-300 ease-in-out">2</span>
+                                </label>
+                    
+                                <label>
+                                    <input type="radio" id="avatar3" name="avatar" value="3" class="hidden peer" required />
+                                    <span class="btn btn-sm peer-checked:border-2 peer-checked:border-primary transition-all duration-300 ease-in-out">3</span>
+                                </label>
+                    
+                                <label>
+                                    <input type="radio" id="avatar4" name="avatar" value="4" class="hidden peer" required />
+                                    <span class="btn btn-sm peer-checked:border-2 peer-checked:border-primary transition-all duration-300 ease-in-out">4</span>
+                                </label>
+                    
+                                <label>
+                                    <input type="radio" id="avatar5" name="avatar" value="5" class="hidden peer" required />
+                                    <span class="btn btn-sm peer-checked:border-2 peer-checked:border-primary transition-all duration-300 ease-in-out">5</span>
+                                </label>
+                            </div>
+                        </section>
+
+                        <!-- Name -->
+                        <section>
+                            
+                        </section>
+
+                        <input type="submit" value="หน้าถัดไป" class="btn btn-sm">
+                    </div>
+                </form>
+            </div>
+
+            <script>
+                // การเชื่อมโยง Avatar และ Input
+                const avatarPreview = document.getElementById('avatarPreview');
+                const avatarInputs = document.querySelectorAll('input[name="avatar"]');
+
+                avatarInputs.forEach(input => {
+                input.addEventListener('change', () => {
+                    const avatarNumber = input.value;
+
+                    // ลดความโปร่งใสของภาพเพื่อให้เกิดแอนิเมชันจางหาย
+                    avatarPreview.classList.add('opacity-10');
+
+                    // รอจนกว่าภาพจะจางหายก่อนที่จะเปลี่ยนภาพ
+                    setTimeout(() => {
+                    avatarPreview.src = `./assets/avatar/avatar${avatarNumber}.jpeg`;
+                    // เปลี่ยนภาพเสร็จแล้วค่อยๆ เพิ่มความโปร่งใสกลับมา
+                    avatarPreview.classList.remove('opacity-10');
+                    }, 150); // 150ms เท่ากับระยะเวลาใน transition-opacity
+                });
+                });
+            </script>
+
+        </dialog>
+    </div>
+
     <!--  END Open the modal using ID.showModal() method -->
 
     <div>

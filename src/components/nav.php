@@ -27,7 +27,7 @@
 
             <!-- Add Student -->
             <li class="col-span-2">
-                <a class="tooltip tooltip-bottom rounded-full bg-primary hover:bg-primary-content hover:text-current text-white sm:flex" data-tip="Add Student" onclick="my_modal_sorry.showModal()">
+                <a class="tooltip tooltip-bottom rounded-full bg-primary hover:bg-primary-content hover:text-current text-white sm:flex" data-tip="Add Student" onclick="my_modal_insert.showModal()">
                 <p class="hidden sm:block">เพิ่มข้อมูล</p>
                 <i class="fa-solid fa-user-plus fa-lg"></i>
                 </a>

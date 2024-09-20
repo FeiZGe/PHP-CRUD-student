@@ -441,8 +441,99 @@ try {
                         </section>
 
                         <!-- Name -->
-                        <section>
-                            
+                        <section class="w-4/5 justify-center mx-auto">
+                            <h2 class="text-xl font-bold pb-4">ข้อมูลส่วนตัว</h2>
+
+                            <!-- Prefix -->
+                            <?php
+                                try {
+                                    // ดึงข้อมูลคำนำหน้าจาก tbl_prefixes
+                                    $stmt_prefix = $conn->query("SELECT PrefixID, PrefixTH FROM tbl_prefixes ORDER BY PrefixID ASC");
+                                    $prefixes = $stmt_prefix->fetchAll(PDO::FETCH_ASSOC);
+                                
+                                } catch (PDOException $e) {
+                                    echo "Select prefix error: " . $e->getMessage();
+                                }
+                            ?>
+
+                            <article class="w-2/5 mb-2">
+                                <label for="prefix" class="block mb-1 text-sm font-medium">คำนำหน้า</label>
+                                <select id="prefix" name="prefix" class="select bg-base-200 border border-base-300 text-base-content text-sm rounded-lg focus:ring-primary focus:border-primary block w-full py-1 px-2.5">
+                                    <option disabled selected>เลือกคำนำหน้า</option>
+                                    <?php foreach ($prefixes as $prefix): ?>
+                                        <option value="<?= htmlspecialchars($prefix['PrefixID']); ?>">
+                                            <?= htmlspecialchars($prefix['PrefixTH']); ?>
+                                        </option>
+                                    <?php endforeach; ?>
+                                </select>
+                            </article>
+
+                            <!-- Thai name -->
+                            <article class="flex flex-col sm:flex-row gap-4 mb-2">
+                                <div class="w-full sm:w-1/2">
+                                    <label for="first_name" class="block mb-1 text-sm font-medium">ชื่อจริง</label>
+                                    <input type="text" id="first_name" name="first_name" class="bg-base-200 border border-base-300 text-base-content text-sm rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5" placeholder="ชื่อจริง" required />
+                                </div>
+                                <div class="w-full sm:w-1/2">
+                                    <label for="last_name" class="block mb-1 text-sm font-medium">นามสกุล</label>
+                                    <input type="text" id="last_name" name="last_name" class="bg-base-200 border border-base-300 text-base-content text-sm rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5" placeholder="นามสกุล" required />
+                                </div>
+                            </article>
+
+                            <!-- Eng name -->
+                            <article class="flex flex-col sm:flex-row gap-4 mb-2">
+                                <div class="w-full sm:w-1/2">
+                                    <label for="first_name_en" class="block mb-1 text-sm font-medium">ชื่อจริง (EN)</label>
+                                    <input type="text" id="first_name_en" name="first_name_en" class="bg-base-200 border border-base-300 text-base-content text-sm rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5" placeholder="First name" required />
+                                </div>
+                                <div class="w-full sm:w-1/2">
+                                    <label for="last_name_en" class="block mb-1 text-sm font-medium">นามสกุล (EN)</label>
+                                    <input type="text" id="last_name_en" name="last_name_en" class="bg-base-200 border border-base-300 text-base-content text-sm rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5" placeholder="Last name" required />
+                                </div>
+                            </article>
+                              
+                            <!-- Age Tel -->
+                            <article class="flex flex-col sm:flex-row gap-4 mb-2">
+                                <div class="w-2/5">
+                                    <label for="age" class="block mb-1 text-sm font-medium">อายุ</label>
+                                    <input type="number" id="age" name="age" class="bg-base-200 border border-base-300 text-base-content text-sm rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5" min="1" max="100" placeholder="1" required />
+                                </div>
+                                <div class="w-full">
+                                    <label for="phone" class="block mb-1 text-sm font-medium">เบอร์โทร</label>
+                                    <input type="tel" id="phone" name="phone" class="bg-base-200 border border-base-300 text-base-content text-sm rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5 dark:bg-base-100" min="0000000000" max="999999999" placeholder="0999999999" required />
+                                </div>
+                            </article>
+
+                            <!-- City -->
+                            <?php
+                                try {
+                                    // ดึงข้อมูลจังหวัดจาก tbl_city
+                                    $stmt_city = $conn->query("SELECT CityID, CityName FROM tbl_city ORDER BY CityName ASC");
+                                    $cities = $stmt_city->fetchAll(PDO::FETCH_ASSOC);
+                                
+                                } catch (PDOException $e) {
+                                    echo "Select city error: " . $e->getMessage();
+                                }
+                            ?>
+
+                            <article class="w-2/5 mb-2">
+                                <label for="city" class="block mb-1 text-sm font-medium">จังหวัด</label>
+                                <select id="city" name="city" class="select bg-base-200 border border-base-300 text-base-content text-sm rounded-lg focus:ring-primary focus:border-primary block w-full py-1 px-2.5">
+                                    <option disabled selected>เลือกจังหวัด</option>
+                                    <?php foreach ($cities as $city): ?>
+                                        <option value="<?= htmlspecialchars($city['CityID']); ?>">
+                                            <?= htmlspecialchars($city['CityName']); ?>
+                                        </option>
+                                    <?php endforeach; ?>
+                                </select>
+                            </article>
+
+                            <!-- Adress -->
+                            <article class="w-full mb-2">
+                                <label for="address" class="block mb-2 text-sm font-medium">ที่อยู่</label>
+                                <textarea id="address" name="address" rows="4" class="block bg-base-200 border border-base-300 text-base-content text-sm rounded-lg focus:ring-primary focus:border-primary w-full p-2.5" placeholder="Write your thoughts here..."></textarea>
+                            </article>
+
                         </section>
 
                         <input type="submit" value="หน้าถัดไป" class="btn btn-sm">

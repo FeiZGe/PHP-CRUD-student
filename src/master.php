@@ -401,7 +401,7 @@ try {
                 </form>
                 <h1 class="text-3xl font-bold">เพิ่มข้อมูล</h1>
                 <form action="#">
-                    <div>
+                    <div class="w-4/5 justify-center mx-auto">
                         <!-- avatar -->
                         <section class="flex flex-col items-center mb-8">
                             <h2 class="text-xl font-bold text-center py-4">เลือกอวตาร์</h2>
@@ -441,7 +441,7 @@ try {
                         </section>
 
                         <!-- Information -->
-                        <section class="w-4/5 justify-center mx-auto">
+                        <section class="">
                             <h2 class="text-xl font-bold pb-4">ข้อมูลส่วนตัว</h2>
 
                             <!-- Prefix -->
@@ -548,7 +548,7 @@ try {
                             }
                         ?>
 
-                        <section class="w-4/5 justify-center mx-auto">
+                        <section class="">
                             <h2 class="divider divider-start text-xl font-bold py-4">งานอดิเรก</h2>
 
                             <article class="grid grid-cols-2 sm:grid-cols-3 text-sm gap-3">
@@ -559,6 +559,25 @@ try {
                                     <span class=""><?= htmlspecialchars($hobby['HobbyName']); ?></span>
                                 </label>
                                 <?php endforeach; ?>
+                            </article>
+                        </section>
+
+                        <div class="divider py-4"></div>
+
+                        <!-- Study info -->
+                        <section class="">
+                            <h2 class="text-xl font-bold mb-4">การศึกษา</h2>
+                            
+                            <!-- Year, Department -->
+                            <article class="flex flex-col sm:flex-row gap-4 mb-2">
+                                <div class="w-2/5">
+                                    <label for="age" class="block mb-1 text-sm font-medium">อายุ</label>
+                                    <input type="number" id="age" name="age" class="bg-base-200 border border-base-300 text-base-content text-sm rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5" min="1" max="100" placeholder="1" required />
+                                </div>
+                                <div class="w-full">
+                                    <label for="phone" class="block mb-1 text-sm font-medium">เบอร์โทร</label>
+                                    <input type="tel" id="phone" name="phone" class="bg-base-200 border border-base-300 text-base-content text-sm rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5 dark:bg-base-100" min="0000000000" max="999999999" placeholder="0999999999" required />
+                                </div>
                             </article>
                         </section>
 

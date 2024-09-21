@@ -395,7 +395,7 @@ try {
     </dialog>
 
     <!-- Insert Modal -->
-    <?php include "./components/insert.php"; ?>
+    <?php include "./components/insertmodal.php"; ?>
     
 
     <!--  END Open the modal using ID.showModal() method -->

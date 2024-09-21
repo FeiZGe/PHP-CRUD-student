@@ -162,7 +162,7 @@ require_once "../config/dbconnect.php";
     </main>
     
     <!-- Insert Modal -->
-    <?php include "./components/insert.php"; ?>
+    <?php include "./components/insertmodal.php"; ?>
 
     <div>
         <?php include('./components/footer.php'); ?>

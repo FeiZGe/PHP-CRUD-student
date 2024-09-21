@@ -374,24 +374,22 @@ try {
     </dialog>
 
     <!-- Confirm delete -->
-    <dialog id="my_modal_del" class="modal modal-bottom sm:modal-middle">
-        <div class="modal-box">
-            <div class="text-lg font-bold flex items-center gap-2 text-red-500">
-                <i class="fa-solid fa-bell"></i>
-                <h3>ยืนยันการลบข้อมูล</h3>
-            </div>
-            <div class="divider divider-error"></div>
-            <div class="py-2">
-                <p>ต้องการที่จะลบข้อมูลนี้หรือไม่</p>
-            </div>
-            <div class="modal-action">
+    <dialog id="my_modal_del" class="modal">
+    <div class="modal-box">
+        <div class="text-lg font-bold text-red-500 flex items-center gap-2">
+            <i class="fa-solid fa-trash"></i>
+            <h3>ลบข้อมูล</h3>
+        </div>
+        <div class="divider divider-error"></div>
+        <p class="py-4">ยืนยันการลบข้อมูล</p>
+        <div class="modal-action">
+            <button class="btn btn-error btn-md">ลบข้อมูล</button>
             <form method="dialog">
                 <!-- if there is a button in form, it will close the modal -->
-                <button class="btn btn-sm btn-error">ลบข้อมูล</button>
-                <button class="btn btn-sm">ปิด</button>
+                <button class="btn btn-md">ยกเลิก</button>
             </form>
-            </div>
         </div>
+    </div>
     </dialog>
 
     <!-- Insert Modal -->

@@ -157,12 +157,12 @@ require_once "../config/dbconnect.php";
 
             <?php
                 }
-
-                // Close the connection
-                $conn = null;
             ?>
         </section>
     </main>
+    
+    <!-- Insert Modal -->
+    <?php include "./components/insert.php"; ?>
 
     <div>
         <?php include('./components/footer.php'); ?>

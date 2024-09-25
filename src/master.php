@@ -334,9 +334,9 @@ try {
                                             <button class="btn btn-warning btn-square btn-sm text-base-100 text-lg tooltip tooltip-right sm:tooltip-top tooltip-warning hover:scale-110" data-tip="แก้ไขข้อมูล" onclick="my_modal_sorry.showModal()">
                                                 <i class="fa-solid fa-pen"></i>
                                             </button>
-                                            <button class="btn btn-error btn-square btn-sm text-base-100 text-lg tooltip tooltip-right sm:tooltip-top tooltip-error hover:scale-110" data-tip="ลบข้อมูล" onclick="my_modal_del.showModal()">
+                                            <a href="#" class="btn btn-error btn-square btn-sm text-base-100 text-lg tooltip tooltip-right sm:tooltip-top tooltip-error hover:scale-110" data-tip="ลบข้อมูล" onclick="openDeleteModal(<?= $user['SID']; ?>)">
                                                 <i class="fa-solid fa-trash"></i>
-                                            </button>
+                                            </a>
                                         </div>
                                     </td>
                                 </tr>
@@ -392,23 +392,35 @@ try {
     </dialog>
 
     <!-- Confirm delete -->
-    <dialog id="my_modal_del" class="modal">
-    <div class="modal-box">
-        <div class="text-lg font-bold text-red-500 flex items-center gap-2">
-            <i class="fa-solid fa-trash"></i>
-            <h3>ลบข้อมูล</h3>
+    <dialog id="my_modal_del1" class="modal">
+        <div class="modal-box">
+            <div class="text-lg font-bold text-red-500 flex items-center gap-2">
+                <i class="fa-solid fa-trash"></i>
+                <h3>ลบข้อมูล</h3>
+            </div>
+            <div class="divider divider-error"></div>
+            <p class="py-4">ยืนยันการลบข้อมูล</p>
+            <div class="modal-action">
+                <form action="./components/delete.php" method="post">
+                    <input type="hidden" name="sid" id="delete_sid">
+                    <button type="submit" class="btn btn-danger">ลบข้อมูล</button>
+                </form>
+                <form method="dialog">
+                    <button class="btn btn-md">ยกเลิก</button>
+                </form>
+            </div>
         </div>
-        <div class="divider divider-error"></div>
-        <p class="py-4">ยืนยันการลบข้อมูล</p>
-        <div class="modal-action">
-            <button class="btn btn-error btn-md">ลบข้อมูล</button>
-            <form method="dialog">
-                <!-- if there is a button in form, it will close the modal -->
-                <button class="btn btn-md">ยกเลิก</button>
-            </form>
-        </div>
-    </div>
     </dialog>
+    <script>
+        function openDeleteModal(sid) {
+            // กำหนดค่า SID ที่จะลบให้กับ input hidden ใน form
+            document.getElementById('delete_sid').value = sid;
+
+            // แสดง modal
+            const modal = document.getElementById('my_modal_del1');
+            modal.showModal();
+        }
+    </script>
 
     <!-- Insert Modal -->
     <?php include "./components/insertmodal.php"; ?>

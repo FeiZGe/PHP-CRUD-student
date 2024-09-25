@@ -1,6 +1,7 @@
 <?php
 
 require_once "../config/dbconnect.php";
+session_start();
 
 try {
     // จำนวนทั้งหมด
@@ -38,6 +39,7 @@ try {
     ");
     $years_data = $stmt_years->fetchAll(PDO::FETCH_ASSOC);
 
+    
 
 } catch (PDOException $e) {
     echo "Error: " . $e->getMessage();
@@ -164,6 +166,22 @@ try {
             </section>
 
             <div class="divider divider-neutral my-7"></div>
+            <?php if (isset($_SESSION['success'])) { ?>
+                <div class="alert alert-success">
+                    <?php
+                        echo $_SESSION['success'];
+                        unset($_SESSION['success']);
+                    ?>
+                </div>
+            <?php } ?>
+            <?php if (isset($_SESSION['error'])) { ?>
+                <div class="alert alert-error">
+                    <?php
+                        echo $_SESSION['error'];
+                        unset($_SESSION['error']);
+                    ?>
+                </div>
+            <?php } ?>
 
             <!-- Table -->
             <section>

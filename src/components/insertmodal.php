@@ -1,4 +1,5 @@
 <?php
+    session_start();
     // ดึงข้อมูลงานอิเรกจาก tbl_hobby
     $stmt_hobby = $conn->query("SELECT HobbyID, HobbyName FROM tbl_hobby ORDER BY HobbyID ASC");
     $hobbys = $stmt_hobby->fetchAll(PDO::FETCH_ASSOC);
@@ -30,7 +31,7 @@
         <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
         </form>
         <h1 class="text-3xl font-bold">เพิ่มข้อมูล</h1>
-        <form action="./insert.php" method="post">
+        <form action="./components/insert.php" method="post">
             <div class="w-4/5 justify-center mx-auto">
                 <!-- avatar -->
                 <section class="flex flex-col items-center mb-8">
@@ -152,7 +153,7 @@
 
                         <?php foreach ($hobbys as $hobby): ?>
                         <label class="flex flex-row gap-2 cursor-pointer" id="hobby">
-                            <input type="checkbox" id="hobby" name="hobby" value="<?= htmlspecialchars($hobby['HobbyID']); ?>" class="checkbox checkbox-sm checkbox-primary border border-base-content" />
+                            <input type="checkbox" id="hobby" name="hobby[]" value="<?= htmlspecialchars($hobby['HobbyID']); ?>" class="checkbox checkbox-sm checkbox-primary border border-base-content" />
                             <span class=""><?= htmlspecialchars($hobby['HobbyName']); ?></span>
                         </label>
                         <?php endforeach; ?>
@@ -211,7 +212,7 @@
                 </section>
 
                 <section class="flex flex-row justify-center">
-                    <input type="submit" value="ยืนยัน" class="btn btn-wide btn-primary transition ease-in-out duration-300 hover:scale-110">
+                    <input type="submit" name="submit" value="ยืนยัน" class="btn btn-wide btn-primary transition ease-in-out duration-300 hover:scale-110">
                 </section>
             </div>
         </form>

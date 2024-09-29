@@ -107,7 +107,7 @@ ini_set('display_errors', 1);
                             <article class="flex flex-col sm:flex-row gap-4 mb-2">
                                 <div class="w-full sm:w-1/2">
                                     <label for="first_name" class="block mb-1 text-sm font-medium">ชื่อจริง</label>
-                                    <input type="text" id="first_name" name="first_name" class="input bg-base-200 focus:input-primary" value="<?= htmlspecialchars($user['StudentName'] ?? ''); ?>" required />
+                                    <input type="text" id="first_name" name="first_name" class="input bg-base-200 focus:input-primary" value="<?= htmlspecialchars($user['StudentName']); ?>" required />
                                 </div>
                                 <div class="w-full sm:w-1/2">
                                     <label for="last_name" class="block mb-1 text-sm font-medium">นามสกุล</label>

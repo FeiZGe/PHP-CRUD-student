@@ -64,9 +64,12 @@ ini_set('display_errors', 1);
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 </head>
 <body class="bg-sky-300/[.06]">
+    <div>
+        <?php include('./components/nav.php'); ?>
+    </div>
     <div class="container px-3 mx-auto">
         <div class="card">
-            <section class="card-content bg-base-100 pt-7">
+            <section class="card-content bg-base-100 pt-7 px-4 rounded-xl">
                 <h1 class="text-3xl font-bold">แก้ไขข้อมูล</h1>
                 <form action="./components/update.php" method="post">
                     <div class="w-4/5 justify-center mx-auto">
@@ -207,7 +210,7 @@ ini_set('display_errors', 1);
                         </section>
 
                         
-                        <div class="">
+                        <div class="mb-6">
                             <button type="submit" name="update" class="btn btn-primary">บันทึก</button>
                         </div>
                     </div>

@@ -11,7 +11,7 @@
             <li class="">
                 <label class="swap swap-rotate">
                     <!-- this hidden checkbox controls the state -->
-                    <input type="checkbox" class="theme-controller" value="night" />
+                    <input type="checkbox" class="theme-controller" id="theme-toggle" />
                     
                     <!-- sun icon -->
                     <div class="swap-off">
@@ -35,3 +35,36 @@
         </ul>
     </nav>
 </header>
+<script>
+    // ฟังก์ชันเพื่อตรวจสอบและโหลดธีมที่บันทึกไว้ใน localStorage
+    function loadTheme() {
+        const savedTheme = localStorage.getItem('theme');
+        const themeToggle = document.getElementById('theme-toggle');
+        
+        if (savedTheme === 'night') {
+            document.documentElement.setAttribute('data-theme', 'night');
+            themeToggle.checked = true; // ถ้าเป็น night ธีมให้ทำให้ปุ่ม toggle ถูกเลือก
+        } else {
+            document.documentElement.setAttribute('data-theme', 'winter');
+            themeToggle.checked = false; // ถ้าเป็น winter ธีมให้ปุ่ม toggle ไม่ถูกเลือก
+        }
+    }
+
+    // ฟังก์ชันเพื่อเปลี่ยนธีมและบันทึกค่าลง localStorage
+    function changeTheme() {
+        const themeToggle = document.getElementById('theme-toggle');
+        if (themeToggle.checked) {
+            document.documentElement.setAttribute('data-theme', 'night');
+            localStorage.setItem('theme', 'night'); // บันทึกธีมเป็น night
+        } else {
+            document.documentElement.setAttribute('data-theme', 'winter');
+            localStorage.setItem('theme', 'winter'); // บันทึกธีมเป็น winter
+        }
+    }
+
+    // เรียกใช้ฟังก์ชันโหลดธีมเมื่อเปิดหน้า
+    document.addEventListener('DOMContentLoaded', loadTheme);
+
+    // เพิ่ม event listener ให้กับปุ่ม toggle
+    document.getElementById('theme-toggle').addEventListener('change', changeTheme);
+</script>

@@ -331,9 +331,9 @@ try {
                                             <a href="./details.php?SID=<?= $user['SID']; ?>" class="btn btn-info btn-square btn-sm text-base-100 text-lg tooltip tooltip-right sm:tooltip-top tooltip-info hover:scale-110" data-tip="รายละเอียด">
                                                 <i class="fa-solid fa-circle-info"></i>
                                             </a>
-                                            <button class="btn btn-warning btn-square btn-sm text-base-100 text-lg tooltip tooltip-right sm:tooltip-top tooltip-warning hover:scale-110" data-tip="แก้ไขข้อมูล" onclick="my_modal_sorry.showModal()">
+                                            <a href="./edit.php?EditSID=<?= $user['SID']; ?>" class="btn btn-warning btn-square btn-sm text-base-100 text-lg tooltip tooltip-right sm:tooltip-top tooltip-warning hover:scale-110" data-tip="แก้ไขข้อมูล">
                                                 <i class="fa-solid fa-pen"></i>
-                                            </button>
+                                            </a>
                                             <a href="#" class="btn btn-error btn-square btn-sm text-base-100 text-lg tooltip tooltip-right sm:tooltip-top tooltip-error hover:scale-110" data-tip="ลบข้อมูล" onclick="openDeleteModal(<?= $user['SID']; ?>)">
                                                 <i class="fa-solid fa-trash"></i>
                                             </a>
